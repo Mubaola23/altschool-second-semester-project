@@ -1,0 +1,14 @@
+
+- hosts: Slave
+  become: true
+  # vars:
+  #   ansible_ssh_private_key_file: /Users/mac/.ssh/id_rsa
+  tasks:
+    - name: Copy the bash script to the Slave node
+      copy:
+        src: deploy_lamp.sh
+        dest: /tmp/deploy_lamp.sh
+        mode: 0755
+
+    - name: Execute the bash script
+      shell: /tmp/deploy_lamp.sh

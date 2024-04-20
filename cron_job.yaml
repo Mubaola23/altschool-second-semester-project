@@ -1,0 +1,10 @@
+
+- hosts: all
+  become: true
+  tasks:
+    - name: Add cron job to check server uptime
+      cron:
+        name: Check Server Uptime
+        minute: 0
+        hour: 0
+        job: uptime > /var/log/uptime.log
